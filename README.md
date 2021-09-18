@@ -8,18 +8,19 @@ a.  Build a Multi-AvailabilityZone, Multi-Region database and show how to use it
 b.  Build a website hosting solution that is versioned so that any data destruction and accidents can be quickly and easily undone.
 
 
-The instructions for this project are available [here](https://github.com/udacity/nd063-c2-design-for-availability-resilience-reliability-replacement-project-starter-template).
+I have followed the instructions for this project are available in GitHub repo [here](https://github.com/udacity/nd063-c2-design-for-availability-resilience-reliability-replacement-project-starter-template).
 
 ## Project Setup
 ### Cloud formation
-In this project, I used the AWS CloudFormation to create Virtual Private Clouds in two regions in AWS. CloudFormation is an AWS service that allows you to create "infrastructure as code". 
 
-A configuration file written in a YAML file was provided as part of the instruction to automate the creation of the VPCs with public and private subnets and Security Groups. Reference : https://github.com/udacity/nd063-c2-design-for-availability-resilience-reliability-replacement-project-starter-template/blob/master/cloudformation/vpc.yaml
+As per of this project, I used the AWS CloudFormation to create Virtual Private Clouds in two regions in AWS that allows you to create "infrastructure as code". 
+
+Reference has been provided  as part of project instruction available in : https://github.com/udacity/nd063-c2-design-for-availability-resilience-reliability-replacement-project-starter-template/blob/master/cloudformation/vpc.yaml
 
 ### Part 1
 
 ### Data durability and recovery
-In order to achieve the highest levels of durability and availability in AWS, I deployed a Cloud Formation in 2 AWS regions: An active region and a standby region with different CIDR address ranges for the VPCs.
+In order to achieve the highest levels of durability and availability in AWS, I have deployed a Cloud Formation in 2 AWS regions: An active region and a standby region with different CIDR address ranges for the VPCs.
 
 **Primary VPC:**
 ![Primary VPC](screenshots/primary_Vpc.png "Primary VPC")
@@ -29,7 +30,7 @@ In order to achieve the highest levels of durability and availability in AWS, I 
 
 ### Highly durable RDS Database
 
-To secure the access of the database, I created a new RDS **private Subnet group** in the active and standby region. This means that traffic coming directly from the Internet will not be allowed. Only traffic coming from the VPC.
+To secure the access of the database, I have created a new RDS **private Subnet group** in the active and standby region. This will ensure that traffic coming directly from the Internet will not be allowed. Only traffic coming from the VPC will be allowed.
 
 **Subnet groups in the active region:**
 ![Primary DB subnetgroup](screenshots/primaryDB_subnetgroup.png "Primary DB subnetgroup")
@@ -51,15 +52,15 @@ To secure the access of the database, I created a new RDS **private Subnet group
 **Route tables in subnet of the secondary region:**
 ![Secondary subnet routing](screenshots/secondary_subnet_routing.png "Secondary subnet routing")
 
-I created a new MySQL with the following parameters:
-- Multi-AZ database to ensure a smooth failover in case of a single AZ outage
-- Have only the “UDARR-Database” **security group**. This security group was defined in the Cloud Formation to only allow traffic from the EC2 instance (not yet created). More specifically, this “UDARR-Database” security group allows traffic from "UDARR-Application" security group inside the VPC using this specific port: 3306 (mysql port).
-- Have an initial database called “udacity.” 
+I have then created a new MySQL with the following parameters:
+a. Multi-AZ database to ensure a smooth failover in case of a single AZ outage
+b. Have only the “UDARR-Database” **security group**. This security group was defined in the Cloud Formation to only allow traffic from the EC2 instance (not yet created). More specifically, this “UDARR-Database” security group allows traffic from "UDARR-Application" security group inside the VPC using this specific port: 3306 (mysql port).
+c. Have an initial database called “udacity.” 
 
 **Configuration of the database in the active region:**
 ![Primary DB config](screenshots/primaryDB_config.png "Primary DB config")
 
-After the primary database has been set up, I created a read replica database in the standby region. This database has the same requirements as the database in the active region.
+After the primary database has been set up, I have created a read replica database in the standby region. This database has the same requirements as the database in the active region.
 
 **Configuration of the database in the secondary region:**
 ![Secondary DB config](screenshots/secondaryDB_config.png "Secondary DB config")
@@ -72,28 +73,28 @@ Description of Achievable Recovery Time Objective (RTO) and Recovery Point Objec
 If a multi-AZ configuration is set up, the fail over to another AZ will happen automatically which can take a few minutes.
     
 2. Minimum RTO for a single region outage
-- 00:00 - Problem happens (0 minutes) 
-- 00:05 - An amount of time passes before an alert triggers (5 minutes) 
-- 00:06 - Alert triggers on-all staff (1 minute) 
-- 00:16 - On-call staff may need to get out of bed, get to computer, log in, log onto VPN (10 minutes) 
-- 00:26 - On-call staff starts diagnosing issue (10 minutes) 
-- 00:41 - Root cause is discovered (15 minutes) 
-- 00:46 - Remediation started (5 minutes) :  Promote secondary instance to be the new master and then route the traffic to the new endpoint
-- 00:56 - Remediation completed (10 minutes) 
+- 06:00 - Problem happens (0 minutes) 
+- 06:05 - An amount of time passes before an alert triggers (5 minutes) 
+- 06:06 - Alert triggers on-all staff (1 minute) 
+- 06:16 - On-call staff may need to get out of bed, get to computer, log in, log onto VPN (10 minutes) 
+- 06:26 - On-call staff starts diagnosing issue (10 minutes) 
+- 06:41 - Root cause is discovered (15 minutes) 
+- 06:46 - Remediation started (5 minutes) :  Promote secondary instance to be the new master and then route the traffic to the new endpoint
+- 06:56 - Remediation completed (10 minutes) 
 Total time: 56 minutes 
 
 3. Minimum RPO for a single AZ outage
 As it only takes a few minutes to fail over to another AZ, a few minutes of data will be lost.   
        
 4. Minimum RPO for a single region outage 
-If we set up an RDS database with automatic backups enabled, the RPO will be based on how often data is backed up. If we set up a backup every 4 hours, the minimun RPO will be 4 hours.
+If we set up an RDS database with automatic backups enabled, the RPO will be based on how often data is backed up. If we set up a backup every 1 hour, the minimun RPO will be 1 hour.
 
 ### Demonstrate normal usage
 
 In the active region:
 I created an EC2 keypair and launched an Amazon Linux EC2 instance in the active region with the following configuration:
-- VPC's public subnet
-- Security group ("UDARR-Application") that allows incoming traffic (SSH) from the Internet.
+a. VPC's public subnet
+b. Security group ("UDARR-Application") that allows incoming traffic (SSH) from the Internet.
 
 I established a SSH connection to the instance by running this command:
 ```
@@ -120,8 +121,8 @@ Log of connecting to the database, creating the table, writing to and reading fr
 ### Failover And Recovery
 In the standby region:
 
-I created an EC2 keypair in the region and launched an Amazon Linux EC2 instance in the standby region with the same configuration as before.
-Since the database in the standby region is a read replica, we can only read from the database but we cannot insert data.
+I have created an EC2 keypair in the region and launched an Amazon Linux EC2 instance in the standby region with the same configuration as before.
+Since the database in the standby region is a read replica, we can only read from the database but we cannot perform any DML operation (insert data).
 
 Database configuration **before the database promotion:**
 ![DB before promotion](screenshots/rr_before_promotion.png "DB before promotion")
@@ -142,7 +143,7 @@ Log of connecting to the database, writing to and reading from the database **af
 ### Part 3
 ### Website Resiliency
 
-Build a resilient static web hosting solution in AWS. Create a versioned S3 bucket (udacity-primary-s3), configure it as a static website and enabled versioning.
+Build a resilient static web hosting solution in AWS. Create a versioned S3 bucket (udacity-primary-s3), configured it as a static website and enabled versioning.
 
 Then,
 
