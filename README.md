@@ -107,4 +107,14 @@ Log of connecting to the database, creating the table, writing to and reading fr
 ![Log Primary](screenshots/log_primary.png "Log Primary")
 ![Log Primary](screenshots/log_primary1.png "Log Primary")
 
+### Monitor database
+
+**DB Connections:**
+![Monitoring connection](screenshots/monitoring_connections.png "Monitoring connection")
+
+**DB Replication:**
+![Monitoring replication](screenshots/monitoring_replication.png "Monitoring replication")
+
+
+
 
