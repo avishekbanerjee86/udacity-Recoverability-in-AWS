@@ -87,3 +87,22 @@ As it only takes a few minutes to fail over to another AZ, a few minutes of data
 4. Minimum RPO for a single region outage 
 If we set up an RDS database with automatic backups enabled, the RPO will be based on how often data is backed up. If we set up a backup every 4 hours, the minimun RPO will be 4 hours.
 
+### Demonstrate normal usage
+
+In the active region:
+I created an EC2 keypair and launched an Amazon Linux EC2 instance in the active region with the following configuration:
+- VPC's public subnet
+- Security group ("UDARR-Application") that allows incoming traffic (SSH) from the Internet.
+
+I established a SSH connection to the instance by running this command:
+```
+ssh -i {absolute/path/to/secureconnet.pem} {EC2 identifiers provided on the EC2 console while clicking on connect}
+```
+After being connected and having mysql installed, I connected to my database by running this command:
+```
+mysql -u admin -p -h {PRIMARY_DATABASE_ENDPOINT}
+```
+
+Log of connecting to the database, creating the table, writing to and reading from the table:
+![Log Primary](screenshots/log_primary.png "Log Primary")
+
