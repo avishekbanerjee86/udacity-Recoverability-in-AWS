@@ -105,6 +105,6 @@ mysql -u admin -p -h {PRIMARY_DATABASE_ENDPOINT} -P 3306
 
 Log of connecting to the database, creating the table, writing to and reading from the table:
 ![Log Primary](screenshots/log_primary.png "Log Primary")
-![Log Primary](screenshorts/log_primary1.png "Log Primary")
+![Log Primary](screenshots/log_primary1.png "Log Primary")
 
 
