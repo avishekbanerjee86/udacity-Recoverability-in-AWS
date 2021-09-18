@@ -50,4 +50,17 @@ To secure the access of the database, I created a new RDS **private Subnet group
 **Route tables in subnet of the secondary region:**
 ![Secondary subnet routing](screenshots/secondary_subnet_routing.png "Secondary subnet routing")
 
+I created a new MySQL with the following parameters:
+- Multi-AZ database to ensure a smooth failover in case of a single AZ outage
+- Have only the “UDARR-Database” **security group**. This security group was defined in the Cloud Formation to only allow traffic from the EC2 instance (not yet created). More specifically, this “UDARR-Database” security group allows traffic from "UDARR-Application" security group inside the VPC using this specific port: 3306 (mysql port).
+- Have an initial database called “udacity.” 
+
+**Configuration of the database in the active region:**
+![Primary DB config](screenshots/primaryDB_config.png "Primary DB config")
+
+After the primary database has been set up, I created a read replica database in the standby region. This database has the same requirements as the database in the active region.
+
+**Configuration of the database in the secondary region:**
+![Secondary DB config](screenshots/secondaryDB_config.png "Secondary DB config")
+
 
