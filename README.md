@@ -100,7 +100,7 @@ ssh -i {absolute/path/to/secureconnet.pem} {EC2 identifiers provided on the EC2 
 ```
 After being connected and having mysql installed, I connected to my database by running this command:
 ```
-mysql -u admin -p -h {PRIMARY_DATABASE_ENDPOINT} -P 3306
+mysql -u admin -p -h {PRIMARY_DATABASE_ENDPOINT}
 ```
 
 Log of connecting to the database, creating the table, writing to and reading from the table:
