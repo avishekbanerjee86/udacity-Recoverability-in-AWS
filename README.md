@@ -3,6 +3,7 @@
 This project is part of the Udacity AWS Cloud Architect Nanodegree.
 
 The goal of this project is to :
+
 a.  Build a Multi-AvailabilityZone, Multi-Region database and show how to use it in multiple geographically separate AWS regions.  
 b.  Build a website hosting solution that is versioned so that any data destruction and accidents can be quickly and easily undone.
 
@@ -188,5 +189,5 @@ I now need to “recover” the object:
 
 
 
-                                        **End of project **
+                                                                **End of project **
 
