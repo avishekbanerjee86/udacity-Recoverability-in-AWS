@@ -37,3 +37,17 @@ To secure the access of the database, I created a new RDS **private Subnet group
 ![Secondary DB subnetgroup](screenshots/secondaryDB_subnetgroup.png "Secondary DB subnetgroup")
 
 
+**Subnets of the active region:**
+![Primary subnets](screenshots/primaryVPC_subnets.png "Primary subnets")
+
+**Subnet of the secondary region:**
+![Secondary subnets](screenshots/secondaryVPC_subnets.png "Secondary subnets")
+
+
+**Route tables in subnet of the active region:**
+![Primary subnet routing](screenshots/primary_subnet_routing.png "Primary subnet routing")
+
+**Route tables in subnet of the secondary region:**
+![Secondary subnet routing](screenshots/secondary_subnet_routing.png "Secondary subnet routing")
+
+
