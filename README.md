@@ -138,6 +138,53 @@ Log of connecting to the database, writing to and reading from the database **af
 
 
 
+### Part 3
+### Website Resiliency
+
+Build a resilient static web hosting solution in AWS. Create a versioned S3 bucket and configure it as a static website.
+
+1. Enter “index.html” for both Index document and Error document
+2. Upload the files from the GitHub repo (under `/project/s3/`)
+3. Paste URL into a web browser to see your website. 
+
+
+**Original webpage:**
+![Original Webpage](screenshots/s3_original.png "Original Webpage")
+
+You will now “accidentally” change the contents of the website such that it is no longer serving the correct content
+
+1. Change `index.html` to refer to a different “season”
+2. Re-upload `index.html`
+3. Refresh web page
+
+**Modified webpage:**
+![Accidental Change Webpage](screenshots/s3_season.png "Accidental Change Webpage")
+
+You will now need to “recover” the website by rolling the content back to a previous version.
+
+1. Recover the `index.html` object back to the original version
+2. Refresh web page
+
+**Modified webpage (reverted):**
+![Reverted Change Webpage](screenshots/s3_season_revert.png "Reverted Change Webpage")
+
+You will now “accidentally” delete contents from the S3 bucket. Delete “winter.jpg”
+
+**Webpage after content deleted:**
+![Deleted Content Webpage](screenshots/s3_deletion.png "Deleted Content Webpage")
+
+**Existing versions of the file showing the "Deletion marker".**
+![Delete Marker](screenshots/s3_delete_market.png "Delete Marker")
+
+You will now need to “recover” the object:
+
+1. Recover the deleted object
+2. Refresh web page
+
+**Recovered Website:**
+![Recovered Website](screenshots/s3_delete_revert.png "Recovered Website")
+
+
 
 
 
