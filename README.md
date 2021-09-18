@@ -25,3 +25,15 @@ In order to achieve the highest levels of durability and availability in AWS, I 
 
 **Secondary VPC:**
 ![Secondary VPC](screenshots/secondary_Vpc.png "Secondary VPC")
+
+### Highly durable RDS Database
+
+To secure the access of the database, I created a new RDS **private Subnet group** in the active and standby region. This means that traffic coming directly from the Internet will not be allowed. Only traffic coming from the VPC.
+
+**Subnet groups in the active region:**
+![Primary DB subnetgroup](screenshots/primaryDB_subnetgroup.png "Primary DB subnetgroup")
+
+**Subnet groups in the secondary region:**
+![Secondary DB subnetgroup](screenshots/secondaryDB_subnetgroup.png "Secondary DB subnetgroup")
+
+
