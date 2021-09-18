@@ -174,7 +174,7 @@ You will now “accidentally” delete contents from the S3 bucket. Delete “wi
 ![Deleted Content Webpage](screenshots/s3_deletion.png "Deleted Content Webpage")
 
 **Existing versions of the file showing the "Deletion marker".**
-![Delete Marker](screenshots/s3_delete_market.png "Delete Marker")
+![Delete Marker](screenshots/s3_delete_marker.png "Delete Marker")
 
 You will now need to “recover” the object:
 
