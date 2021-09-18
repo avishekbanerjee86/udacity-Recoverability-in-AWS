@@ -115,6 +115,29 @@ Log of connecting to the database, creating the table, writing to and reading fr
 **DB Replication:**
 ![Monitoring replication](screenshots/monitoring_replication.png "Monitoring replication")
 
+### Part 2
+### Failover And Recovery
+In the standby region:
+
+I created an EC2 keypair in the region and launched an Amazon Linux EC2 instance in the standby region with the same configuration as before.
+Since the database in the standby region is a read replica, we can only read from the database but we cannot insert data.
+
+Database configuration **before the database promotion:**
+![DB before promotion](screenshots/rr_before_promotion.png "DB before promotion")
+
+Log of connecting to the database, writing to and reading from the database **before the database promotion:**
+![Log before promotion](screenshots/log_rr_before_promotion.png "Log before promotion")
+
+After promoting the read replica, we can now insert data into and read from the read replica database.
+
+Database configuration **after the database promotion:**
+![DB after promotion](screenshots/rr_after_promotion.png "DB after promotion")
+
+Log of connecting to the database, writing to and reading from the database **after the database promotion:**
+![Log after promotion](screenshots/log_rr_after_promotion.png "Log after promotion")
+
+
+
 
 
 
