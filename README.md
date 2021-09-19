@@ -10,6 +10,8 @@ b.  Build a website hosting solution that is versioned so that any data destruct
 
 I have followed the instructions for this project are available in GitHub repo [here](https://github.com/udacity/nd063-c2-design-for-availability-resilience-reliability-replacement-project-starter-template).
 
+Note. Updated this document to provide more information on private subnet routing and version of s3 file. The updated section of the document will start with a ***UPDATE START*** and end with ***UPDATE END*** key respectively.
+
 ## Project Setup
 ### Cloud formation
 
@@ -46,11 +48,25 @@ To secure the access of the database, I have created a new RDS **private Subnet 
 ![Secondary subnets](screenshots/secondaryVPC_subnets.png "Secondary subnets")
 
 
-**Route tables in subnet of the active region:**
-![Primary subnet routing](screenshots/primary_subnet_routing.png "Primary subnet routing")
+**Route tables in public subnet of the active region:**
+![Primary public subnet routing](screenshots/primary_subnet_routing.png "Primary public subnet routing")
 
-**Route tables in subnet of the secondary region:**
-![Secondary subnet routing](screenshots/secondary_subnet_routing.png "Secondary subnet routing")
+***UPDATE START***
+
+**Route tables in private subnet of the active region:**
+![Primary private subnet routing](screenshots/primary_private_subnet_routing.png "Primary private subnet routing")
+
+***UPDATE END***
+
+**Route tables in public subnet of the secondary region:**
+![Secondary public subnet routing](screenshots/secondary_subnet_routing.png "Secondary public subnet routing")
+
+***UPDATE START***
+
+**Route tables in private subnet of the secondary region:**
+![Secondary private subnet routing](screenshots/secondary_privaye_subnet_routing.png "Secondary private subnet routing")
+
+***UPDATE END***
 
 I have then created a new MySQL with the following parameters:
 a. Multi-AZ database to ensure a smooth failover in case of a single AZ outage
@@ -169,6 +185,13 @@ I have now  “recover” the website by rolling the content back to a previous 
 
 1. Recover the `index.html` object back to the original version
 2. Refresh web page
+
+***UPDATE START***
+
+**Versions of Index.html in s3 bucket:**
+![Versions of Index.html file](screenshots/s3_versions_of_index_file.png "Versions of Index.html file")
+
+***UPDATE END***
 
 **Modified webpage (reverted):**
 ![Reverted Change Webpage](screenshots/s3_season_revert.png "Reverted Change Webpage")
