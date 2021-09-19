@@ -81,6 +81,7 @@ If a multi-AZ configuration is set up, the fail over to another AZ will happen a
 - 06:41 - Root cause is discovered (15 minutes) 
 - 06:46 - Remediation started (5 minutes) :  Promote secondary instance to be the new master and then route the traffic to the new endpoint
 - 06:56 - Remediation completed (10 minutes) 
+
 Total time: 56 minutes 
 
 3. Minimum RPO for a single AZ outage
