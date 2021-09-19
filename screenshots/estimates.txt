@@ -1,0 +1,21 @@
+Estimate availability of this configuration
+
+Description of Achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database in terms of:
+
+Minimum RTO for a single AZ outage If a multi-AZ configuration is set up, the fail over to another AZ will happen automatically which can take a few minutes.
+
+Minimum RTO for a single region outage
+
+06:00 - Problem happens (0 minutes)
+06:05 - An amount of time passes before an alert triggers (5 minutes)
+06:06 - Alert triggers on-all staff (1 minute)
+06:16 - On-call staff may need to get out of bed, get to computer, log in, log onto VPN (10 minutes)
+06:26 - On-call staff starts diagnosing issue (10 minutes)
+06:41 - Root cause is discovered (15 minutes)
+06:46 - Remediation started (5 minutes) : Promote secondary instance to be the new master and then route the traffic to the new endpoint
+06:56 - Remediation completed (10 minutes)
+Total time: 56 minutes
+
+Minimum RPO for a single AZ outage As it only takes a few minutes to fail over to another AZ, a few minutes of data will be lost.
+
+Minimum RPO for a single region outage If we set up an RDS database with automatic backups enabled, the RPO will be based on how often data is backed up. If we set up a backup every 1 hour, the minimum RPO will be 1 hour.
