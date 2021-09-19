@@ -88,7 +88,7 @@ Total time: 56 minutes
 As it only takes a few minutes to fail over to another AZ, a few minutes of data will be lost.   
        
 4. Minimum RPO for a single region outage 
-If we set up an RDS database with automatic backups enabled, the RPO will be based on how often data is backed up. If we set up a backup every 1 hour, the minimun RPO will be 1 hour.
+If we set up an RDS database with automatic backups enabled, the RPO will be based on how often data is backed up. If we set up a backup every 1 hour, the minimum RPO will be 1 hour.
 
 ### Demonstrate normal usage
 
